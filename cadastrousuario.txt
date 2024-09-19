@@ -1,0 +1,80 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class CadastroUsuarioWindow extends JFrame {
+    
+    // Componentes da interface gráfica
+    private JTextField nomeField;
+    private JTextField emailField;
+    private JPasswordField senhaField;
+    private JButton cadastrarButton;
+    private JLabel messageLabel;
+
+    public CadastroUsuarioWindow() {
+        // Configuração da janela
+        setTitle("Cadastro de Usuário");
+        setSize(300, 250);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        // Criar os componentes da interface
+        nomeField = new JTextField(15);
+        emailField = new JTextField(15);
+        senhaField = new JPasswordField(15);
+        cadastrarButton = new JButton("Cadastrar");
+        messageLabel = new JLabel("");
+
+        // Painel para organizar os campos de texto e botões
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(5, 1));
+        panel.add(new JLabel("Nome:"));
+        panel.add(nomeField);
+        panel.add(new JLabel("E-mail:"));
+        panel.add(emailField);
+        panel.add(new JLabel("Senha:"));
+        panel.add(senhaField);
+        panel.add(cadastrarButton);
+        panel.add(messageLabel);
+
+        // Ação do botão de cadastro
+        cadastrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cadastrarUsuario();
+            }
+        });
+
+        // Adicionar o painel à janela
+        add(panel);
+    }
+
+    // Método para cadastrar o usuário
+    private void cadastrarUsuario() {
+        String nome = nomeField.getText();
+        String email = emailField.getText();
+        String senha = new String(senhaField.getPassword());
+
+        // Aqui você pode implementar a lógica para salvar os dados no banco de dados
+        // Neste exemplo, só exibimos uma mensagem de sucesso
+
+        if (!nome.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
+            messageLabel.setText("Usuário cadastrado com sucesso!");
+            messageLabel.setForeground(Color.GREEN);
+        } else {
+            messageLabel.setText("Preencha todos os campos.");
+            messageLabel.setForeground(Color.RED);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Inicializar o cadastro de usuário
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new CadastroUsuarioWindow().setVisible(true);
+            }
+        });
+    }
+}
