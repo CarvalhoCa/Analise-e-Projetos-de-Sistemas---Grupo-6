@@ -1,0 +1,85 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class CadastroAnimalWindow extends JFrame {
+    
+    // Componentes da interface gráfica
+    private JTextField nomeField;
+    private JTextField idadeField;
+    private JTextField racaField;
+    private JTextArea descricaoArea;
+    private JButton cadastrarButton;
+    private JLabel messageLabel;
+
+    public CadastroAnimalWindow() {
+        // Configuração da janela
+        setTitle("Cadastro de Animal");
+        setSize(300, 350);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        // Criar os componentes da interface
+        nomeField = new JTextField(15);
+        idadeField = new JTextField(15);
+        racaField = new JTextField(15);
+        descricaoArea = new JTextArea(5, 15);
+        cadastrarButton = new JButton("Cadastrar Animal");
+        messageLabel = new JLabel("");
+
+        // Painel para organizar os campos de texto e botões
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(7, 1));
+        panel.add(new JLabel("Nome do Animal:"));
+        panel.add(nomeField);
+        panel.add(new JLabel("Idade:"));
+        panel.add(idadeField);
+        panel.add(new JLabel("Raça:"));
+        panel.add(racaField);
+        panel.add(new JLabel("Descrição:"));
+        panel.add(new JScrollPane(descricaoArea));
+        panel.add(cadastrarButton);
+        panel.add(messageLabel);
+
+        // Ação do botão de cadastro
+        cadastrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cadastrarAnimal();
+            }
+        });
+
+        // Adicionar o painel à janela
+        add(panel);
+    }
+
+    // Método para cadastrar o animal
+    private void cadastrarAnimal() {
+        String nome = nomeField.getText();
+        String idade = idadeField.getText();
+        String raca = racaField.getText();
+        String descricao = descricaoArea.getText();
+
+        // Aqui você pode implementar a lógica para salvar os dados no banco de dados
+        // Neste exemplo, só exibimos uma mensagem de sucesso
+
+        if (!nome.isEmpty() && !idade.isEmpty() && !raca.isEmpty() && !descricao.isEmpty()) {
+            messageLabel.setText("Animal cadastrado com sucesso!");
+            messageLabel.setForeground(Color.GREEN);
+        } else {
+            messageLabel.setText("Preencha todos os campos.");
+            messageLabel.setForeground(Color.RED);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Inicializar o cadastro de animais
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new CadastroAnimalWindow().setVisible(true);
+            }
+        });
+    }
+}
