@@ -1,0 +1,31 @@
+package PetSgram;
+
+import javax.swing.JOptionPane;
+
+public class login {
+
+	public static void main(String[] args) {
+		
+		//apenas exemplo de login e senha 
+		String login = "Petsgram@gmail.com";
+		String senha = "56735750";
+		
+		for (int i = 2; i>=0; i--) {
+			String LoginUsu = JOptionPane.showInputDialog("Insira seu login: ");
+			String senhaUsu = JOptionPane.showInputDialog("Digite a sua Senha: ");
+			
+			if (LoginUsu.equals(login)&& senhaUsu.equals(senha)) {
+				JOptionPane.showMessageDialog(null, "Usuário Liberado! ");
+				break;
+			} else {
+				if (i == 0 ) {
+					JOptionPane.showMessageDialog(null, "Usuário incorreto, tentativas esgotadas! ");
+				} else {
+					JOptionPane.showMessageDialog(null, "Usuário incorreto, você tem mais "+ i +" tentativas ");
+				}
+			}
+		}
+
+	}
+
+}
