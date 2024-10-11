@@ -17,6 +17,7 @@ id INT PRIMARY KEY,
 nome VARCHAR(50)
 );
 
+
 CREATE TABLE animais (
 id INT PRIMARY KEY,
 raca_id INT,
@@ -27,6 +28,15 @@ especie_id INT,
 FOREIGN KEY (raca_id) REFERENCES raca(id),
 FOREIGN KEY (especie_id) REFERENCES especie(id)
 );
+
+ALTER TABLE animal
+ADD genero VARCHAR(15);
+
+select * from animal;
+
+UPDATE animal
+SET genero = 'femea' 
+WHERE id = 10;
 
 INSERT INTO usuario (id, nome, telefone, email) VALUES
 (1, 'João Silva', '123456789', 'joao.silva@example.com'),
@@ -72,7 +82,7 @@ INSERT INTO animais (id, raca_id, tamanho, cor, idade, especie_id) VALUES
 (9, 4, 'Pequeno', 'Preto', 4, 1),   -- Persa, Gato
 (10, 5, 'Pequeno', 'Marrom', 5, 1); -- Siamês, Gato
 
-select * from animais;
+select * from animal;
 select * from especie;
 select * from raca;
 select * from usuario;
