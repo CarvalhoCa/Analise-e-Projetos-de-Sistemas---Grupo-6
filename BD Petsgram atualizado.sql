@@ -82,6 +82,21 @@ INSERT INTO animais (id, raca_id, tamanho, cor, idade, especie_id) VALUES
 (9, 4, 'Pequeno', 'Preto', 4, 1),   -- Persa, Gato
 (10, 5, 'Pequeno', 'Marrom', 5, 1); -- Siamês, Gato
 
+CREATE TABLE instituicao (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    endereco VARCHAR(255),
+    telefone VARCHAR(20),
+    email VARCHAR(100)
+);
+
+INSERT INTO instituicao (nome, endereco, telefone, email) VALUES
+('Instituição A', 'Rua das Flores, 123', '(11) 1234-5678', 'contato@instituicaoA.com'),
+('Instituição B', 'Avenida Brasil, 456', '(11) 2345-6789', 'contato@instituicaoB.com'),
+('Instituição C', 'Praça da Liberdade, 789', '(11) 3456-7890', 'contato@instituicaoC.com'),
+('Instituição D', 'Alameda dos Anjos, 101', '(11) 4567-8901', 'contato@instituicaoD.com'),
+('Instituição E', 'Estrada das Palmeiras, 202', '(11) 5678-9012', 'contato@instituicaoE.com');
+
 select * from animal;
 select * from especie;
 select * from raca;
